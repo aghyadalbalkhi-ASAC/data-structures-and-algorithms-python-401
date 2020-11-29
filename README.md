@@ -5,17 +5,11 @@ its about reversing the elements of array for example :
 
 [1,2,3,4] it will be after  reversing [4,3,2,1]
 
-## Challenge
-<!-- Description of the challenge -->
-create a method that take an array as a parameter and return the same reversed array
+## Table of Contents
 
-## Approach & Efficiency
-<!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
-create an empty array and loop over the original one and push the elements from the end to a new array
-
-The Big O > O(n)*2
-
-## Solution
-<!-- Embedded whiteboard image -->
-
-![Solution](/assets/reverseArray.jpeg)
+| Challenge-01       | [Read Link ](data-structures-and-algorithms-python-401/data_structures_and_algorithms/challenges/array_reverse/README.md)  |
+|-------------------------|----------------------------------------------------------------------------------------------------|
+| Challenge-01       | [Read Link ]()  |
+| Challenge-01       | [Read Link ]()  |
+| Challenge-01       | [Read Link ]()  |
+| Challenge-01       | [Read Link ]()  |
