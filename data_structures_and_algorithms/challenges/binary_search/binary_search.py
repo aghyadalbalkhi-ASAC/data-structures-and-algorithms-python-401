@@ -20,12 +20,12 @@ def array_binarySearch(array,target):
         # if mid greater than the target  
         # set the mid point as the end point -1 becuse we check the mid at the beginning  
         if array[mid] > target: 
-            endPoint=mid+1
+            endPoint=mid-1
   
         # if mid smaller than the target  
         # set the mid point as the start point +1 becuse we check the mid at the beginning  
         else: 
-            startPoint=mid-1        
+            startPoint=mid+1        
    
     # value Not Found
     return -1
@@ -33,7 +33,7 @@ def array_binarySearch(array,target):
 
 if __name__ == "__main__":
     array = [ 25, 35, 65, 80, 85,86,96,97,98,102,111 ] 
-    target = 35
+    target = 103
 
     index = array_binarySearch(array,target) 
     
