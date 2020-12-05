@@ -1,75 +1,71 @@
 class Node:
+    """ 
+    Node class Create Objects that has properties for the value stored in the Node, and a pointer to the next Node.
+    """
+    #initialize the constructor
     def __init__(self, value):
         self.value = value
         self.next = None
 
+    #This Method called when print or use the object it self (similar to to string method)
+    def __repr__(self):
+        return f'{{ {self.value} }}'
+
 class LinkedList:
+
+    """
+    A Linked List is a sequence of Nodes that are connected/linked to each other.
+    The most defining feature of a Linked List is that each Node references the next Node in the link.
+    """
+
+    #initialize an empty linke list with head -> Null
     def __init__(self):
         self.head = None
         self.size = 0
 
     def insert(self,value):
+        """
+        The Insert method Take value as an argument then create a node to insert this node at the beginning of this list
+        """
+
+        # Creating Node and setting the value
         new_node=Node(value)
+
+        #edge Case to add the node as  a head if the LinkedList Is Empty
         if not self.head:
             self.head=new_node
         else:
-           new_node.next=self.head
-           self.head=new_node    
+           new_node.next=self.head              #set the pointer to the new node to the head
+           self.head=new_node                   # set the new node as the head of linkedList
 
-    def append(self, data):
-        # Step0: create the data node
-        node = Node(data)
-        if self.head == None:
-            self.head = node
+    def includes(self, value):
+        """
+        This Function check if the list contain a node with specific value and retrun True if founded 
+        """
+        # To check if the LinkedList Empty Or Not
+        if not self.head:
+            return False
         else:
-            # Step1: initialize current with head (index zero)
-            current = self.head
-            # Step2: keep moving current until you reach the last node
-            while current.next != None:
-                current = current.next
-            # current is the last node
-            # Step3: make the current points to the new node
-            current.next = node
-        self.size += 1
-
-    def __len__(self):
-        return self.size
+            current_Node = self.head        #set the node_pointer which is looping over the LinkeList
+            # Step2: keep moving current_Node until you reach the last node
+            while current_Node != None:
+                if current_Node.value == value:
+                    return True
+                else:
+                    current_Node = current_Node.next
+            return False
 
     def __str__(self):
-        pass
+        """
+        This Method for Print the LinkedList in specific Formatting Style
+        """
+        current_Node = self.head
+        print(current_Node)
+        linkedList_Serise = ''
+        while current_Node != None:
+            linkedList_Serise += f'{current_Node} -> '
+            current_Node=current_Node.next
+        linkedList_Serise+= 'NULL'
+        return linkedList_Serise
 
-
-if __name__ == "__main__":
-    node1 = Node(5)
-    print(node1.value)
-    node2 = Node(7)
-    node1.next = node2
     
-    print(node1.value)
-    # node1 -> node2 -> None
-
-
-
-
-
-
-
-# """
-# Class Node will Create a Node which present one item in the list
-# """
-
-# class Node:
-#     def __init__(self,value):
-#         self.value = value
-#         self.next = None
-
-# class LinkedList:
-#     """
-# The LinkedList Class will content the list of nodes that we created using the Node class and link thoses togather 
-#     """
-#     def __init__(self):
-#         self.head = None
-#         self.size = 0
-
-#     # put your LinkedList implementation here
-#     pass
