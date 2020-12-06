@@ -12,6 +12,24 @@ def test_LinkedList_insert():
     test_LinkedList.insert(0)
     assert test_LinkedList.head.value == 0
 
+def test_LinkedList_insertBefore():
+    test_LinkedList = LinkedList()
+    test_LinkedList.insert(5)
+    test_LinkedList.insert(35)
+    test_LinkedList.insert(4)
+    test_LinkedList.append(5555)
+    test_LinkedList.insertBefore(35,0)
+    assert test_LinkedList.__str__() == "{ 4 } -> { 0 } -> { 35 } -> { 5 } -> { 5555 } -> NULL"
+
+def test_LinkedList_insertAfter():
+    test_LinkedList = LinkedList()
+    test_LinkedList.insert(5)
+    test_LinkedList.insert(35)
+    test_LinkedList.insert(4)
+    test_LinkedList.append(5555)
+    test_LinkedList.insertAfter(35,1)
+    assert test_LinkedList.__str__() == "{ 4 } -> { 35 } -> { 1 } -> { 5 } -> { 5555 } -> NULL"
+
 
 #Add_ To Not Empty LinkedList From the beginning 
 def test_LinkedList_insert_second_Test():
