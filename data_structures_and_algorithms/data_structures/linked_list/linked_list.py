@@ -23,6 +23,57 @@ class LinkedList:
         self.head = None
         self.size = 0
 
+    def append(self,value):
+        """
+        The append method Take value as an argument then create a node to append this node at the end of this list
+        """
+        # Creating Node and setting the value
+        new_node = Node(value)
+
+        #edge Case to add the node as  a head if the LinkedList Is Empty
+        if not self.head:
+            self.head = new_node
+        else :
+            current_Node = self.head        #set the node_pointer which is looping over the LinkeList
+
+            while current_Node.next != None:    #moving until the last node where last node .next will refer to None
+                current_Node = current_Node.next    #Transfer to the next node
+            current_Node.next = new_node                 # outter of loop to add the node
+
+    def insertBefore(self,value, newVal):
+        """
+        Add a new node with the given newValue immediately Befor the first value node
+        """             
+        new_node = Node(newVal)             #create New Node
+        if not self.includes(value):                   # if LinkedList Empty
+            return "Value Not Found"
+        elif self.head.value == value:      # if the value in the Head insert at the first 
+            self.insert(newVal)
+        else :                                  
+            current_Node = self.head        #set the node_pointer which is looping over the LinkeList
+            while current_Node.next != None:    
+                if current_Node.next.value == value:    #check the value of next node before moving
+                    new_node.next = current_Node.next   # link the new_node first
+                    current_Node.next = new_node        # link the current node to new node
+                    break
+                current_Node = current_Node.next        #Transfer to the next node
+                    
+    def insertAfter(self,value, newVal):
+        """
+        Add a new node with the given newValue immediately After the first value node
+        """        
+        new_node = Node(newVal)             #create New Node
+        if not self.includes(value):                   # if LinkedList Empty
+            return "Value Not Found"
+        else :                                  
+            current_Node = self.head        #set the node_pointer which is looping over the LinkeList
+            while current_Node.next != None:    
+                if current_Node.value == value:    #check the value of current node before moving
+                    new_node.next = current_Node.next   # link the new_node first
+                    current_Node.next = new_node        # link the current node to new node
+                    break
+                current_Node = current_Node.next        #Transfer to the next node
+                
     def insert(self,value):
         """
         The Insert method Take value as an argument then create a node to insert this node at the beginning of this list
@@ -60,7 +111,6 @@ class LinkedList:
         This Method for Print the LinkedList in specific Formatting Style
         """
         current_Node = self.head
-        print(current_Node)
         linkedList_Serise = ''
         while current_Node != None:
             linkedList_Serise += f'{current_Node} -> '
@@ -68,4 +118,12 @@ class LinkedList:
         linkedList_Serise+= 'NULL'
         return linkedList_Serise
 
-    
+if __name__ == "__main__":
+    ll = LinkedList()
+    ll.insert(5)
+    ll.insert(35)
+    ll.insert(4)
+    ll.append(5555)
+    print(ll.insertBefore(35,0))
+    print(ll.insertAfter(35,1))
+    print(ll)
