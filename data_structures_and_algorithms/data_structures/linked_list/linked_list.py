@@ -106,6 +106,40 @@ class LinkedList:
                     current_Node = current_Node.next
             return False
 
+    def linkedList_Lenght(self):
+        """
+        This Function will getting the the lenght of the array (size)
+        """
+        lenght=0                         #setting the length variable
+        if not self.head:                   # if empty return zero
+            return 0
+        else : 
+            current_Node = self.head            # looping until the end 
+            while current_Node != None:             
+                lenght+=1
+                current_Node = current_Node.next
+            return lenght
+
+    def ll_kth_from_end(self,k):
+        """
+        This method  takes a number, k, as a parameter.
+        Return the node’s value that is k from the end of the linked lis
+        """
+
+        length = self.linkedList_Lenght()               # get the length of linkedList         
+        if length ==0:                                  # Empty LinkedList
+            return "Empty LinkedList"                   
+        if k >= length:                                 # k out of index case
+            return "Greater Than List"                  # nigative values
+        if k<0:
+            return "Enter Positive Number"
+        current_k = (length-k)-1                        # get the index of k in normal flow and -1 for indexing
+        current_node = self.head
+        for node in range(current_k):                   #looping and stop at the k Node 
+            current_node=current_node.next
+        return current_node.value
+
+
     def __str__(self):
         """
         This Method for Print the LinkedList in specific Formatting Style
@@ -124,6 +158,7 @@ if __name__ == "__main__":
     ll.insert(35)
     ll.insert(4)
     ll.append(5555)
-    print(ll.insertBefore(35,0))
-    print(ll.insertAfter(35,1))
+    # print(ll.insertBefore(35,0))
+    # print(ll.insertAfter(35,1))
+    print(ll.ll_kth_from_end(1))
     print(ll)
