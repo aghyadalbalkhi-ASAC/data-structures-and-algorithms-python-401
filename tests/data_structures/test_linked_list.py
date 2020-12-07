@@ -47,6 +47,17 @@ def test_LinkedList_includes():
     assert test_LinkedList.includes(1) == True
     assert test_LinkedList.includes(100) == False
 
+
+def test_LinkedList_kthFromEnd():
+    test_LinkedList = LinkedList()
+    test_LinkedList.insert(5)
+    test_LinkedList.insert(35)
+    test_LinkedList.insert(4)
+    test_LinkedList.append(5555)
+    test_LinkedList.insertAfter(35,1)
+    assert test_LinkedList.ll_kth_from_end(0) == 5555
+    assert test_LinkedList.ll_kth_from_end(1) == 5
+
 #To Check if the LinkedList contain a node with specific value 
 def test__str__():
     test_LinkedList = LinkedList()
