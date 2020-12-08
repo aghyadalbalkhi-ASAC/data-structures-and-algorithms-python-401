@@ -1,5 +1,5 @@
 from data_structures_and_algorithms.data_structures.linked_list.linked_list import LinkedList
-
+from data_structures_and_algorithms.data_structures.ll_zip.ll_zip import zip
 
 def test_instance():
     ll = LinkedList()
@@ -75,3 +75,50 @@ def test__str__():
     test_LinkedList.insert('0')
     test_LinkedList.insert('2')
     assert test_LinkedList.__str__() == "{ 2 } -> { 0 } -> { 2 } -> { 0 } -> { _ } -> { C } -> { O } -> { V } -> { I } -> { D } -> { - } -> { 1 } -> { 9 } -> NULL"
+
+    
+def test_zip_empty_linked_list():
+     fruits = LinkedList()
+     people=LinkedList()
+     actual= zip(fruits,people)
+     expexted="Lists are empty -> None"
+     assert actual==expexted
+
+def test_zip_linked_list():
+    fruits = LinkedList()
+    fruits.append('apple')
+    fruits.append('orange')
+    fruits.append('grap')
+
+    people=LinkedList()
+    people.append('yazan')
+    people.append('rami')
+    people.append('hamza')
+    
+    actual= zip(fruits,people)
+    expexted="{ apple } -> { yazan } -> { orange } -> { rami } -> { grap } -> { hamza } -> NULL"
+    assert actual==expexted
+
+def test_zip_first_linked_list_isEmpty():
+    fruits = LinkedList()
+
+    people=LinkedList()
+    people.append('yazan')
+    people.append('rami')
+    people.append('hamza')
+    
+    actual= zip(fruits,people)
+    expexted="{ yazan } -> { rami } -> { hamza } -> NULL"
+    assert actual==expexted
+
+def test_zip_second_linked_list_isEmpty():
+    fruits = LinkedList()
+    fruits.append('apple')
+    fruits.append('orange')
+    fruits.append('grap')
+
+    people=LinkedList()
+
+    actual= zip(fruits,people)
+    expexted="{ apple } -> { orange } -> { grap } -> NULL"
+    assert actual==expexted
