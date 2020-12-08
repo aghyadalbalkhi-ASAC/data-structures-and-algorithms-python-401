@@ -1,3 +1,5 @@
+from data_structures_and_algorithms.data_structures.ll_zip.ll_zip import zip
+
 class Node:
     """ 
     Node class Create Objects that has properties for the value stored in the Node, and a pointer to the next Node.
