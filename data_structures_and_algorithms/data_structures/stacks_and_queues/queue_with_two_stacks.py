@@ -1,15 +1,20 @@
+#  //////////////////////// Node Class //////////////////////////
+
 class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
 
 
+#  //////////////////////// Stack Class //////////////////////////
 class Stack:
     def __init__(self):
         self.top = None
 
-    def push(self, data):
-        node = Node(data)
+    def push(self, value):
+
+        # Create New Node 
+        node = Node(value)
         if self.top:
             node.next = self.top
         self.top = node
@@ -17,9 +22,9 @@ class Stack:
     def pop(self):
         if self.top == None:
             raise AttributeError("Stack is empty")
-        popped = self.top.value
+        temp = self.top.value
         self.top = self.top.next
-        return(popped)
+        return(temp)
 
     def peek(self):
         if self.top == None:
@@ -27,25 +32,40 @@ class Stack:
         return self.top.value
 
     def isEmpty(self):
-        if self.top:
-            return False
-        return True
+        return self.top == None
 
+#  //////////////////////// PseudoQueue Class //////////////////////////
 class PseudoQueue:
     def __init__(self):
-        self.stack1=Stack()
-        self.stack2=Stack()
+        self.stack_En=Stack()
+        self.stack_De=Stack()
 
     def enqueue(self,value):
-        self.stack1.push(value)
+        self.stack_En.push(value)
 
     def dequeue(self):
-        if self.stack1.peek() == None and self.stack2.peek() == None :
+        pop_item = None
+        if self.stack_En.peek() == None :
             return "Queue is Empty"
-        if self.stack2.top ==None :
-            while (self.stack1.top):
-                self.stack2.push(self.stack1.pop())
-        return self.stack2.pop()
+
+            
+        while (self.stack_En.top):
+            self.stack_De.push(self.stack_En.pop())
+        pop_item = self.stack_De.pop()
+
+        while (self.stack_De.top):
+                self.stack_En.push(self.stack_De.pop())
+
+        return pop_item
+
+    def print_(self):
+        temp = self.stack_En.top
+        while (temp):
+            print(temp.value)
+            temp = temp.next
+            
+
+
 
 
 if __name__ == "__main__":
@@ -54,6 +74,4 @@ if __name__ == "__main__":
     aghyad.enqueue(6)
     aghyad.enqueue(77)
     aghyad.dequeue()
-    aghyad.dequeue()
-
-print(aghyad.stack2.peek())
+    aghyad.print_()
