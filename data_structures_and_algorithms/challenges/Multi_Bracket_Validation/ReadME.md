@@ -24,4 +24,4 @@
 ## Solution
 <!-- Embedded whiteboard image -->
 
-![Solution](assets/brackets.jpg)
+![Solution](/assets/brackets.jpg)
