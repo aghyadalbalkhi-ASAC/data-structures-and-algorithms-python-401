@@ -21,23 +21,25 @@ class Queue:
             self.rear = node
 
     def dequeue(self):
-
+        temp = self.front
         if self.is_empty():
-            return 'Queue is empty'
+            raise AttributeError ('Queue is empty')
         else:
-            temp = self.front
+            
             self.front = self.front.next
             temp.next = None
-            return temp.value
+        if self.front == None:
+            self.rear = None
+        return temp.value
 
     def peek(self):
         try:
             return self.front.value
         except AttributeError:
-            return 'Queue is empty'
+            raise AttributeError ('Queue is empty')
 
     def is_empty(self):
-        if not self.rear :
+        if self.rear == None and self.front == None :
             return True
         else:
             return False
@@ -55,7 +57,7 @@ class Stack:
     def pop(self):
 
         if not self.top :
-            return "Stack Is Empty"
+            raise AttributeError ('Queue is empty')
         else:
             temp = self.top
             self.top = self.top.next
@@ -68,7 +70,7 @@ class Stack:
         if not self.is_empty():
             return self.top.value
         else :
-            return "Stack Is Empty"
+            raise AttributeError ('Queue is empty')
 
     def is_empty(self):
         if not self.top:
@@ -79,18 +81,36 @@ class Stack:
 
 if __name__ == "__main__":
     stack = Stack()
+    # print('check when initlize the stack ',stack.is_empty())
+    # stack.push(5)
+    # stack.push(6)
+    # stack.push('cat')
+    # print(stack.peek())
+    # print('check after adding some items ',stack.is_empty())
+
+    # stack.pop()
+    # stack.pop()
+    # print(stack.peek())
+    # print('check after pop() some items ',stack.is_empty())
+
+    # stack.pop()
+    # print(stack.peek())
+    # print('check after pop() all items ',stack.is_empty())
+    # print(stack.is_empty())
+
     stack.push(5)
     stack.push(6)
     stack.push('cat')
-    stack.peek()
-    print(stack.pop())
-    print(stack.peek())
+    stack.pop()
+    stack.pop()
+    stack.pop()
     print(stack.is_empty())
 
     queue = Queue()
     queue.enqueue(4)
     queue.enqueue(5)
+    queue.enqueue(5)
+    queue.dequeue()
+    queue.dequeue()
+    queue.dequeue()
     print(queue.is_empty())
-    print(queue.peek())
-    print(queue.dequeue())
-    print(queue.peek())
