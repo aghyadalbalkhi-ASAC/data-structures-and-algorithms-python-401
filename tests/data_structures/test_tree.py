@@ -32,8 +32,20 @@ def test_contains_tree(pr_BT):
 def test_Not_contains_tree(pr_BT):
     assert pr_BT.contains(555) == False
     
+def test_Not_find_maximum_value():
+    bt_test =BinaryTree() 
+    with pytest.raises(AssertionError):  # pass the Exception type or Exception for all Exceptions
+        bt_test.find_maximum_value()
     
-
+def test_find_maximum_value():
+    bt_test =BinaryTree()
+    bt_test.root = Node(6) 
+    bt_test.root.right = Node(5)
+    bt_test.root.left = Node(-1)
+    bt_test.root.right.left = Node(7)
+    bt_test.root.left.left = Node(10)
+    bt_test.root.right.right = Node(3) 
+    assert bt_test.find_maximum_value() == 10
 
 @pytest.fixture
 def pr_BT():

@@ -17,6 +17,7 @@ class BinaryTree:
 
     def __init__(self):
         self.root = None
+        self.max = 0
 
 
     def preOrder(self):
@@ -89,6 +90,32 @@ class BinaryTree:
         #4. Return the resul
 
         return output
+    
+    def find_maximum_value(self):
+        
+        # if Binary_Tree Empty
+        if not self.root:
+            raise AssertionError ('Binary Tree is Empty')
+        
+        #2. Define the closure
+        def _walk(node):
+            if node.value > self.max:
+                self.max = node.value
+            # if left node has a child  (reach the leaf nodes)
+            if node.left:
+                _walk(node.left)
+            
+            # if right node has a child  (reach the leaf nodes)
+            if node.right:
+                _walk(node.right)
+                
+        #3. Call the closure with initial value
+        _walk(self.root)
+
+        #4. Return the max
+
+        return self.max
+
 
 class BinarySearchTree(BinaryTree):
     
@@ -147,15 +174,16 @@ class BinarySearchTree(BinaryTree):
 
 if __name__ == "__main__":
     bt = BinaryTree()
-    bt.root = Node(6)
-    bt.root.right = Node(5)
-    bt.root.left = Node(-1)
-    bt.root.right.left = Node(7)
-    bt.root.left.left = Node(10)
-    bt.root.right.right = Node(3)
-    print(bt.preOrder())
-    print(bt.inOrder())
-    print(bt.postOrder())
+    # bt.root = Node(6)
+    # bt.root.right = Node(5)
+    # bt.root.left = Node(-1)
+    # bt.root.right.left = Node(7)
+    # bt.root.left.left = Node(10)
+    # bt.root.right.right = Node(3)
+    # print(bt.preOrder())
+    # print(bt.inOrder())
+    # print(bt.postOrder())
+    print(bt.find_maximum_value())
     # bst = BinarySearchTree()
     # bst.add(4)
     # bst.add(9)
