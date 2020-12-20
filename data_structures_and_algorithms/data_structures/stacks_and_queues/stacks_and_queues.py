@@ -44,6 +44,14 @@ class Queue:
         else:
             return False
 
+    def print_(self):
+        temp = self.front
+        str = ''
+        while temp:
+            str += f'{temp.value} - > '
+            temp = temp.next
+        return str
+
 class Stack:
     def __init__(self):
         self.top = None
@@ -98,19 +106,18 @@ if __name__ == "__main__":
     # print('check after pop() all items ',stack.is_empty())
     # print(stack.is_empty())
 
-    stack.push(5)
-    stack.push(6)
-    stack.push('cat')
-    stack.pop()
-    stack.pop()
-    stack.pop()
-    print(stack.is_empty())
+    # stack.push(5)
+    # stack.push(6)
+    # stack.push('cat')
+    # stack.pop()
+    # stack.pop()
+    # stack.pop()
+    # print(stack.is_empty())
 
     queue = Queue()
     queue.enqueue(4)
     queue.enqueue(5)
-    queue.enqueue(5)
-    queue.dequeue()
-    queue.dequeue()
-    queue.dequeue()
-    print(queue.is_empty())
+    # queue.enqueue(5)
+    # queue.enqueue(77)
+    # queue.dequeue()
+    # print(queue.print_())
