@@ -1,3 +1,4 @@
+from data_structures_and_algorithms.data_structures.stacks_and_queues.stacks_and_queues import Queue
 
 class Node :
     """
@@ -115,8 +116,29 @@ class BinaryTree:
         #4. Return the max
 
         return self.max
+    
+    def breadth_first(self,node):
+    # INPUT  <-- root node
+    # OUTPUT <-- front node of queue to console
 
+    #Queue breadth <-- new Queue()
+        results =[]
+        breadth = Queue()
+        breadth.enqueue(node)
+        
+        try:
+            while breadth.peek():
+                front = breadth.dequeue()
+                results.append(front.value)
 
+                if front.left:
+                    breadth.enqueue(front.left)
+
+                if front.right:
+                    breadth.enqueue(front.right)
+        except AttributeError :
+            pass
+        return results
 class BinarySearchTree(BinaryTree):
     
     def add(self,value):
@@ -174,12 +196,13 @@ class BinarySearchTree(BinaryTree):
 
 if __name__ == "__main__":
     bt = BinaryTree()
-    # bt.root = Node(6)
-    # bt.root.right = Node(5)
-    # bt.root.left = Node(-1)
-    # bt.root.right.left = Node(7)
-    # bt.root.left.left = Node(10)
-    # bt.root.right.right = Node(3)
+    bt.root = Node(6)
+    bt.root.right = Node(5)
+    bt.root.left = Node(-1)
+    bt.root.right.left = Node(7)
+    bt.root.left.left = Node(10)
+    bt.root.right.right = Node(3)
+    bt.breadth_first(bt.root)
     # print(bt.preOrder())
     # print(bt.inOrder())
     # print(bt.postOrder())

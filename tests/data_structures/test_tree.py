@@ -46,6 +46,16 @@ def test_find_maximum_value():
     bt_test.root.left.left = Node(10)
     bt_test.root.right.right = Node(3) 
     assert bt_test.find_maximum_value() == 10
+    
+def test_breadth_first():
+    bt_test =BinaryTree()
+    bt_test.root = Node(6) 
+    bt_test.root.right = Node(5)
+    bt_test.root.left = Node(-1)
+    bt_test.root.right.left = Node(7)
+    bt_test.root.left.left = Node(10)
+    bt_test.root.right.right = Node(3) 
+    assert bt_test.breadth_first(bt_test.root) == [6, -1, 5, 10, 7, 3]
 
 @pytest.fixture
 def pr_BT():
