@@ -21,3 +21,4 @@
 <!-- Embedded whiteboard image -->
 
 ![Solution](/assets/insertion_sort.jpg)
+![whiteboard](/assets/whiteboard-insertionsort.jpg)
