@@ -1,6 +1,8 @@
+
 def insertionSort(arr): 
     # loop through array elements [from 1 to last element]
-    
+    for i in range(1, len(arr)): 
+
         #point to the last sorted element
         j = i-1
         
